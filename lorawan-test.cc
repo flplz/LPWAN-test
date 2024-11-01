@@ -16,6 +16,8 @@
 #include <set>
 #include <algorithm>
 #include <ctime>
+#include <unordered_map>
+
 
 using namespace ns3;
 using namespace lorawan;
@@ -27,30 +29,36 @@ uint32_t packetsSent = 0;
 uint32_t packetsReceived = 0;
 Time totalDelay;
 std::set<uint32_t> receivedUids;  // Para armazenar UIDs de pacotes já recebidos
+std::unordered_map<uint32_t, Time> sentTimes;  // Mapa para armazenar tempos de envio
 
 // Função para enviar o pacote e capturar o envio
 void PacketSent(Ptr<LoraNetDevice> device, Ptr<Packet> packet) {
-    NS_LOG_INFO("Enviando pacote de " << packet->GetSize() << " bytes. UID: " << packet->GetUid());
+    uint32_t uid = packet->GetUid();
+    NS_LOG_INFO("Pacote enviado explicitamente com UID: " << packet->GetUid() << " pelo dispositivo " << device->GetNode()->GetId());
     packetsSent++;
+    sentTimes[uid] = Simulator::Now();  // Armazena o tempo de envio
     device->Send(packet);
 }
+
 
 // Função de callback para recepção de pacotes
 bool PacketReceived(Ptr<NetDevice> dev, Ptr<const Packet> packet, uint16_t, const Address&) {
     uint32_t uid = packet->GetUid();
     NS_LOG_INFO("Pacote recebido com UID: " << uid << ", tamanho: " << packet->GetSize());
 
-    // Verificar se o UID já foi recebido para evitar duplicação
     if (receivedUids.find(uid) == receivedUids.end()) {
         receivedUids.insert(uid);
         packetsReceived++;
-        Time delay = Simulator::Now();  // Calcular atraso
-        totalDelay += delay;
+        if (sentTimes.find(uid) != sentTimes.end()) {  // Verifica se o tempo de envio está armazenado
+            Time delay = Simulator::Now() - sentTimes[uid];  // Calcula o atraso
+            totalDelay += delay;
+            sentTimes.erase(uid);  // Remove o tempo de envio para liberar memória
+        }
         NS_LOG_INFO("Pacote processado. UID: " << uid << ", tamanho: " << packet->GetSize());
         return true;
     } else {
         NS_LOG_WARN("Pacote duplicado ignorado. UID: " << uid << ", tamanho: " << packet->GetSize());
-        return false;  // Pacote duplicado
+        return false;
     }
 }
 
@@ -79,8 +87,8 @@ int main(int argc, char* argv[]) {
     NS_LOG_INFO("Setting up helpers...");
     MobilityHelper mobility;
     Ptr<ListPositionAllocator> allocator = CreateObject<ListPositionAllocator>();
-    allocator->Add(Vector(1000, 0, 0));
-    allocator->Add(Vector(0, 0, 0));
+    allocator->Add(Vector(0, 0, 0));      // Gateway 1
+    allocator->Add(Vector(500, 500, 0));  // Gateway 2 em uma posição diferente
     mobility.SetPositionAllocator(allocator);
     mobility.SetMobilityModel("ns3::ConstantPositionMobilityModel");
 
@@ -109,7 +117,7 @@ int main(int argc, char* argv[]) {
      *********************/
     NS_LOG_INFO("Creating the gateway...");
     NodeContainer gateways;
-    gateways.Create(1);
+    gateways.Create(2);
     mobility.Install(gateways);
 
     // Instalar gateways
@@ -129,22 +137,25 @@ int main(int argc, char* argv[]) {
     }
 
     // Para gateways
-    Ptr<LoraNetDevice> gatewayDev = DynamicCast<LoraNetDevice>(gatewayNetDevices.Get(0));
-    NS_ASSERT(gatewayDev != nullptr);
-    gatewayDev->SetReceiveCallback(MakeCallback(&PacketReceived));
+    for (uint32_t j = 0; j < gatewayNetDevices.GetN(); ++j) {
+        Ptr<LoraNetDevice> gatewayDev = DynamicCast<LoraNetDevice>(gatewayNetDevices.Get(j));
+        NS_ASSERT(gatewayDev != nullptr);
+        gatewayDev->SetReceiveCallback(MakeCallback(&PacketReceived));
+    }
 
     /*********************************************
      *  Instalar aplicações nos dispositivos  *
      *********************************************/
     OneShotSenderHelper oneShotSenderHelper;
-    oneShotSenderHelper.SetSendTime(Seconds(5));  // Ajustar intervalo para 5 segundos
-    oneShotSenderHelper.Install(endDevices);
+    oneShotSenderHelper.SetSendTime(Seconds(10));  // Aumenta o intervalo de envio automático
+    //oneShotSenderHelper.Install(endDevices);
 
-    // Enviar pacote explicitamente
-    Ptr<LoraNetDevice> dev = DynamicCast<LoraNetDevice>(endDeviceNetDevices.Get(0));
-    Ptr<Packet> packet = Create<Packet>(50); // Pacote de 50 bytes
-    Simulator::Schedule(Seconds(1.0), &PacketSent, dev, packet);  // Agendar o envio do pacote
-
+       // Enviar pacotes explicitamente
+    for (uint32_t k = 0; k < endDevices.GetN(); ++k) {
+        Ptr<LoraNetDevice> dev = DynamicCast<LoraNetDevice>(endDeviceNetDevices.Get(k));
+        Ptr<Packet> packet = Create<Packet>(50); // Pacote de 50 bytes
+        Simulator::Schedule(Seconds(1.0 + k), &PacketSent, dev, packet);  // Agendar o envio do pacote com um pequeno atraso
+    }
     /****************
      *  Simulação  *
      ****************/
@@ -156,12 +167,14 @@ int main(int argc, char* argv[]) {
     NS_LOG_INFO("Pacotes enviados: " << packetsSent);
     NS_LOG_INFO("Pacotes recebidos: " << packetsReceived);
     if (packetsSent > 0) {
-        NS_LOG_INFO("Pacotes perdidos: " << (packetsSent - packetsReceived));
+        NS_LOG_INFO("Pacotes perdidos: " << ((packetsSent > packetsReceived) ? (packetsSent - packetsReceived) : 0));
     } else {
         NS_LOG_INFO("Nenhum pacote enviado.");
     }
     if (packetsReceived > 0) {
-        NS_LOG_INFO("Atraso médio: " << totalDelay.GetSeconds() / packetsReceived << " segundos");
+        NS_LOG_INFO("Atraso médio: " << (totalDelay.GetSeconds() / packetsReceived) << " segundos");
+    } else {
+        NS_LOG_INFO("Nenhum pacote recebido.");
     }
 
     Simulator::Destroy();
