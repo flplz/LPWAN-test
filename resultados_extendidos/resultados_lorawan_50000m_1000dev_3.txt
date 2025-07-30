@@ -1,0 +1,15 @@
+=== RESULTADOS LORAWAN ===
+Execução: 3
+Distância (m): 50000
+Dispositivos: 1000
+Pacotes Enviados: 10000
+Pacotes Recebidos: 9300
+Pacotes Duplicados: 0
+PDR (%): 93
+PLR (%): 7
+Retransmissão (%): 10
+Vazão (bps): 930000
+Utilização do Canal (%): 35
+Atraso Médio (s): 4
+Banda Utilizada (kHz): 155
+Consumo Energia (J): 33

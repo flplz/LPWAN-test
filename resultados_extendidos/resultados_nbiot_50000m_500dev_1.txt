@@ -1,0 +1,15 @@
+=== RESULTADOS NBIOT ===
+Execução: 1
+Distância (m): 50000
+Dispositivos: 500
+Pacotes Enviados: 5000
+Pacotes Recebidos: 4900
+Pacotes Duplicados: 0
+PDR (%): 98
+PLR (%): 2
+Retransmissão (%): 17
+Vazão (bps): 490000
+Utilização do Canal (%): 30
+Atraso Médio (s): 3
+Banda Utilizada (kHz): 145
+Consumo Energia (J): 40

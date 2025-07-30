@@ -1,0 +1,38 @@
+# Arquivos temporários e de teste
+resultados_simplificado/
+resultados_teste/
+teste_*.sh
+*.tmp
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Logs
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos de compilação NS-3
+build/
+cmake-cache/
+*.o
+*.so
+
+# Manter apenas os resultados finais
+!resultados_validos/
+!resultados_extendidos/
+!*.csv 

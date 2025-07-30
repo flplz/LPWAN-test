@@ -1,0 +1,15 @@
+=== RESULTADOS SIGFOX ===
+Execução: 1
+Distância (m): 15000
+Dispositivos: 1000
+Pacotes Enviados: 10000
+Pacotes Recebidos: 9200
+Pacotes Duplicados: 0
+PDR (%): 92
+PLR (%): 8
+Retransmissão (%): 16
+Vazão (bps): 920000
+Utilização do Canal (%): 31
+Atraso Médio (s): 4
+Banda Utilizada (kHz): 148
+Consumo Energia (J): 21

@@ -1,0 +1,15 @@
+=== RESULTADOS NB-IOT ===
+Execução: 2
+Distância (m): 4000
+Dispositivos: 50
+Pacotes Enviados: 500
+Pacotes Recebidos: 490
+Pacotes Duplicados: 0
+PDR (%): 98
+PLR (%): 2
+Retransmissão (%): 4
+Vazão (bps): 49000
+Utilização do Canal (%): 71
+Atraso Médio (s): 2
+Banda Utilizada (kHz): 373
+Consumo Energia (J): 29
