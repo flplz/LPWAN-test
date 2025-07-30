@@ -45,7 +45,6 @@ LPWAN-test/
 │   └── resultados_extendidos/     # Dados brutos
 ├── 🔧 scripts/                    # Scripts de automação
 │   ├── gerar_experimentos_extendidos_simples.sh
-│   ├── gerar_experimentos_extendidos.sh
 │   ├── converter_extendidos_csv.py
 │   ├── instalar_ns3.sh
 │   └── verificar_instalacao.sh

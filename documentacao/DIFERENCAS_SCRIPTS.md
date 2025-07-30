@@ -38,31 +38,11 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 
 ---
 
-### **2. 🔧 `gerar_experimentos_extendidos.sh`** (VERSÃO ALTERNATIVA)
+### **2. 🔧 `gerar_experimentos_extendidos.sh`** (REMOVIDO)
 
-**O que faz:**
-- Gera dados simulados com cálculos mais precisos
-- Mesmas configurações (1.440 experimentos)
-- Usa `bc` para aritmética de ponto flutuante
+**Status:** Este script foi removido para simplificar o projeto.
 
-**Configurações:**
-- **Mesmas**: 3 tecnologias × 6 distâncias × 8 densidades × 10 execuções
-- **Total**: **1.440 experimentos**
-
-**Vantagens:**
-- ✅ Cálculos mais precisos (ponto flutuante)
-- ✅ Mesmas configurações estendidas
-- ✅ Resultados mais realistas
-
-**Desvantagens:**
-- ❌ **Pode dar erro** se `bc` não estiver instalado
-- ❌ **Menos confiável** em diferentes sistemas
-- ❌ **Mais lento** que a versão simples
-
-**Quando usar:**
-- Se `bc` estiver instalado e funcionando
-- Quando quiser cálculos mais precisos
-- Como alternativa à versão simples
+**Motivo:** O script `gerar_experimentos_extendidos_simples.sh` atende todas as necessidades e é mais confiável.
 
 ---
 

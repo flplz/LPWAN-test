@@ -21,16 +21,16 @@
 ## 🔬 ANÁLISE DETALHADA
 
 ### 📡 NBIOT
-- **PDR médio:** 82.7%
-- **Vazão média:** 7103108 bps
-- **Consumo energético:** 167.6 J
-- **Atraso médio:** 9.750 s
-
-### 📡 LORAWAN
 - **PDR médio:** 93.5%
 - **Vazão média:** 9795742 bps
 - **Consumo energético:** 265.2 J
 - **Atraso médio:** 5.250 s
+
+### 📡 LORAWAN
+- **PDR médio:** 82.7%
+- **Vazão média:** 7103108 bps
+- **Consumo energético:** 167.6 J
+- **Atraso médio:** 9.750 s
 
 ### 📡 SIGFOX
 - **PDR médio:** 82.5%

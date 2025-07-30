@@ -33,7 +33,6 @@ LPWAN-test/
 │   └── resultados_extendidos/     # Dados brutos (.txt)
 ├── 🔧 scripts/                    # Scripts de automação
 │   ├── gerar_experimentos_extendidos_simples.sh
-│   ├── gerar_experimentos_extendidos.sh
 │   ├── converter_extendidos_csv.py
 │   ├── instalar_ns3.sh
 │   └── verificar_instalacao.sh
@@ -96,8 +95,7 @@ LPWAN-test/
 **Propósito:** Contém scripts para automação de tarefas.
 
 #### **Geração de Experimentos:**
-- **`gerar_experimentos_extendidos_simples.sh`** - ⭐ **RECOMENDADO** (1.440 experimentos)
-- **`gerar_experimentos_extendidos.sh`** - Versão alternativa com cálculos precisos
+- **`gerar_experimentos_extendidos_simples.sh`** - ⭐ **PRINCIPAL** (1.440 experimentos)
 
 #### **Conversão e Análise:**
 - **`converter_extendidos_csv.py`** - Converte .txt para CSV

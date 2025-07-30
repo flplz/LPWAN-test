@@ -8,7 +8,7 @@
 > "os scripts precisam ter saida em csv ou uma indicação de como gerar um arquivo a partir das saidas e depois o codigo de como converte."
 
 **✅ ATENDIDO:**
-- **Script de conversão**: `scripts/converter_resultados.py` - converte automaticamente de .txt para .csv
+- **Script de conversão**: `scripts/converter_extendidos_csv.py` - converte automaticamente de .txt para .csv
 - **Saída padronizada**: Todos os arquivos seguem formato consistente
 - **Reproduzibilidade**: Scripts automatizados para conversão
 - **Instruções claras**: Documentação completa em `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
@@ -16,10 +16,7 @@
 **Como usar:**
 ```bash
 # Converter todos os resultados para CSV
-python3 scripts/converter_resultados.py --all
-
-# Converter arquivo específico
-python3 scripts/converter_resultados.py sigfox resultados_sigfox.csv
+python3 scripts/converter_extendidos_csv.py
 ```
 
 ### **2. ✅ CONSUMO DE ENERGIA PARA TODAS AS TECNOLOGIAS**
@@ -84,17 +81,14 @@ resultados/resultados_extendidos/
 # 2. Executar verificação
 ./scripts/verificar_instalacao.sh
 
-# 3. Instalar dependências (se necessário)
-./scripts/instalar_ns3.sh
+# 3. Executar experimentos
+./scripts/gerar_experimentos_extendidos_simples.sh
 
-# 4. Executar experimentos
-./scripts/run_experiments_simplificado.sh
+# 4. Converter para CSV
+python3 scripts/converter_extendidos_csv.py
 
-# 5. Converter para CSV
-python3 scripts/converter_resultados.py --all
-
-# 6. Analisar resultados
-python3 scripts/analise_resultados.py
+# 5. Analisar resultados
+python3 analise/analise_completa.py
 ```
 
 ## 📊 **MÉTRICAS COLETADAS (TODAS AS TECNOLOGIAS)**

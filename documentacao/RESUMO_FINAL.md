@@ -38,13 +38,13 @@ cat resultados/resultados_extendidos/resultados_sigfox_3000m_10dev_1.txt
 sudo apt install python3-pandas python3-numpy python3-matplotlib python3-seaborn
 
 # Converter resultados
-python3 scripts/converter_resultados.py --all
+python3 scripts/converter_extendidos_csv.py
 ```
 
 ### **3. Análise dos Dados:**
 ```bash
 # Gerar gráficos e relatórios
-python3 scripts/analise_resultados.py
+python3 analise/analise_completa.py
 ```
 
 ## 🚀 **REPRODUZIBILIDADE**
@@ -52,7 +52,7 @@ python3 scripts/analise_resultados.py
 ### **Para Reproduzir os Experimentos:**
 ```bash
 cd ~/ns3_test/LPWAN-test
-./scripts/run_experiments_simplificado.sh
+./scripts/gerar_experimentos_extendidos_simples.sh
 ```
 
 ### **Para Verificar Instalação:**
@@ -66,14 +66,11 @@ cd ~/ns3_test/LPWAN-test
 /home/lipef/ns3_test/
 ├── LPWAN-test/                    ← Seus experimentos
 │   ├── resultados/resultados_extendidos/   ← 1.440 arquivos de resultados
-│   ├── sigfox/                    ← Códigos Sigfox
-│   ├── lorawan/                   ← Códigos LoRaWAN
-│   ├── nbiot/                     ← Códigos NB-IoT
-│   ├── run_experiments_simplificado.sh
-│   ├── scripts/converter_resultados.py
-│   ├── scripts/analise_resultados.py
+│   ├── codigos/                   ← Códigos das simulações
+│   ├── scripts/gerar_experimentos_extendidos_simples.sh
+│   ├── scripts/converter_extendidos_csv.py
+│   ├── analise/analise_completa.py
 │   └── ...
-└── ns-3-dev/                      ← NS-3 instalado
 ```
 
 ## 🎓 **VALIDAÇÃO ACADÊMICA**

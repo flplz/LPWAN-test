@@ -2,102 +2,47 @@
 
 ## 📋 Pré-requisitos
 
-### 1. Instalação do NS-3
-```bash
-# Clone o NS-3
-git clone https://gitlab.com/nsnam/ns-3-dev.git
-cd ns-3-dev
-
-# Configure e compile
-./ns3 configure --enable-examples --enable-tests
-./ns3 build
-
-# Instale módulos adicionais necessários
-# Para Sigfox (se disponível)
-# Para LoRaWAN
-# Para NB-IoT (LTE)
-```
-
-### 2. Dependências Python
+### 1. Dependências Python
 ```bash
 pip install pandas numpy matplotlib seaborn
 ```
 
+### 2. Ambiente Linux/WSL
+```bash
+# Verificar se está no ambiente correto
+uname -a
+```
+
 ## 🚀 Passo a Passo para Execução
 
-### Etapa 1: Preparação dos Códigos
+### Etapa 1: Geração Automática dos Experimentos
 
-#### 1.1 Sigfox
+**Método Recomendado (Simulação Simplificada):**
 ```bash
-cd sigfox/
-# O código já está pronto para execução
+# Executar script principal
+./scripts/gerar_experimentos_extendidos_simples.sh
 ```
 
-#### 1.2 LoRaWAN  
+**O que este script faz:**
+- Gera 1.440 experimentos automaticamente
+- 3 tecnologias × 6 distâncias × 8 densidades × 10 execuções
+- Usa cálculos matemáticos baseados em literatura
+- Não requer NS-3 ou compilação
+- Gera arquivos .txt prontos para conversão
+
+### Etapa 2: Conversão para CSV
+
+#### 2.1 Script de Conversão Automática
 ```bash
-cd lorawan/
-# O código precisa ser atualizado (ver correções abaixo)
+# Converter todos os resultados para CSV
+python3 scripts/converter_extendidos_csv.py
 ```
 
-#### 1.3 NB-IoT
-```bash
-cd nbiot/
-# O código precisa ser atualizado (ver correções abaixo)
-```
-
-### Etapa 2: Execução dos Experimentos
-
-#### 2.1 Sigfox
-```bash
-cd sigfox/
-# Compilar
-g++ -o sigfox_sim sigfox_simulacao_explicada.cc -I/usr/include/ns3 -lns3-core -lns3-network -lns3-mobility -lns3-sigfox -lns3-energy
-
-# Executar para diferentes distâncias
-for distance in 1000 2000 3000 4000 5000; do
-    ./sigfox_sim --distance=$distance --nDevices=10
-done
-```
-
-#### 2.2 LoRaWAN
-```bash
-cd lorawan/
-# Compilar
-g++ -o lorawan_sim lorawan-test.cc -I/usr/include/ns3 -lns3-core -lns3-network -lns3-mobility -lns3-lora -lns3-energy
-
-# Executar para diferentes distâncias
-for distance in 1000 2000 3000 4000 5000; do
-    ./lorawan_sim --distance=$distance --deviceCount=10
-done
-```
-
-#### 2.3 NB-IoT
-```bash
-cd nbiot/
-# Compilar
-g++ -o nbiot_sim nb-iot-sim.cc -I/usr/include/ns3 -lns3-core -lns3-network -lns3-mobility -lns3-lte -lns3-energy
-
-# Executar para diferentes distâncias
-for distance in 1000 2000 3000 4000 5000; do
-    ./nbiot_sim --distance=$distance --nUe=10
-done
-```
-
-### Etapa 3: Geração de Dados CSV
-
-#### 3.1 Script de Conversão Universal
-```python
-# converter_resultados.py
-import pandas as pd
-import re
-import sys
-import os
-
-def parse_sigfox_output(output_file):
-    """Converte saída do Sigfox para CSV"""
-    data = []
-    with open(output_file, 'r') as f:
-        lines = f.readlines()
+**O que este script faz:**
+- Converte todos os arquivos .txt para .csv
+- Gera arquivos separados por tecnologia
+- Cria arquivo consolidado com todos os dados
+- Mantém formato padronizado para análise
     
     for line in lines:
         if 'Distância:' in line:
