@@ -124,11 +124,6 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 | **NS-3 funcionando** | `run_experiments.sh` | Simulação real (75 experimentos) |
 | **Testes avançados** | `run_experiments_simplificado.sh` | Híbrido (NS-3 + simulação) |
 
-### **Para cálculos precisos:**
-
-| Cenário | Script | Por quê? |
-|---------|--------|----------|
-| **`bc` disponível** | `gerar_experimentos_extendidos.sh` (REMOVIDO) | Cálculos de ponto flutuante |
 
 ## 📋 **RESUMO EXECUTIVO**
 
@@ -144,12 +139,4 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 - **Tempo**: Minutos/horas
 - **Confiabilidade**: Depende da instalação NS-3
 
-**🔧 PARA CÁLCULOS PRECISOS:**
-- **Use**: `gerar_experimentos_extendidos_simples.sh` (recomendado)
-- **Resultado**: 1.440 experimentos com ponto flutuante
-- **Tempo**: Segundos
-- **Confiabilidade**: Depende do `bc`
 
----
-
-**💡 DICA:** Para seu projeto acadêmico, continue usando `gerar_experimentos_extendidos_simples.sh` - é o mais confiável e gera exatamente o que você precisa! 
