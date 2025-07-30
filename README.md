@@ -98,7 +98,7 @@ Converte resultados .txt para CSV padronizado.
 python3 scripts/converter_extendidos_csv.py
 ```
 
-### **3. `scripts/gerar_experimentos_extendidos_simples.sh`**
+### **3. `scripts/gerar_experimentos_extendidos_simples.sh`** ⭐ **RECOMENDADO**
 Gera os 1.440 experimentos com configurações estendidas.
 
 **Uso:**
@@ -113,6 +113,46 @@ Verifica se o ambiente está configurado corretamente.
 ```bash
 ./scripts/verificar_instalacao.sh
 ```
+
+## 📋 **DIFERENÇAS ENTRE OS SCRIPTS DE GERAÇÃO**
+
+### **🎯 `gerar_experimentos_extendidos_simples.sh`** ⭐ **RECOMENDADO**
+**O que faz:** Gera dados simulados realistas (1.440 experimentos)
+- **Configurações**: 6 distâncias × 8 densidades × 10 execuções
+- **Método**: Simulação com aritmética bash simples
+- **Vantagens**: ✅ Sempre funciona, rápido, reprodutível
+- **Uso atual**: Este é o script que gerou seus resultados
+
+### **🔧 `gerar_experimentos_extendidos.sh`** (VERSÃO ALTERNATIVA)
+**O que faz:** Gera dados simulados com cálculos mais precisos
+- **Configurações**: Mesmas (1.440 experimentos)
+- **Método**: Simulação com `bc` para ponto flutuante
+- **Problemas**: ❌ Pode dar erro se `bc` não estiver instalado
+- **Uso**: Alternativa se quiser cálculos mais precisos
+
+### **🚀 `run_experiments.sh`** (SIMULAÇÃO NS-3 REAL)
+**O que faz:** Executa simulações NS-3 reais
+- **Configurações**: 5 distâncias × 3 densidades × 5 execuções (75 experimentos)
+- **Método**: Compila e executa códigos C++ NS-3
+- **Problemas**: ❌ Depende de módulos NS-3, configurações antigas
+- **Uso**: Apenas se NS-3 estiver funcionando perfeitamente
+
+### **📊 `run_experiments_simplificado.sh`** (VERSÃO HÍBRIDA)
+**O que faz:** Tenta NS-3 real, fallback para simulação
+- **Configurações**: Variadas
+- **Método**: Híbrido (NS-3 + simulação)
+- **Problemas**: ❌ Complexo, pode falhar
+- **Uso**: Para testes avançados
+
+## 🎯 **QUAL SCRIPT USAR?**
+
+| Cenário | Script Recomendado | Por quê? |
+|---------|-------------------|----------|
+| **Análise dos dados** | `analise_resultados.py` | Gera gráficos dos resultados existentes |
+| **Gerar novos experimentos** | `gerar_experimentos_extendidos_simples.sh` | Confiável, rápido, configurações corretas |
+| **Simulação NS-3 real** | `run_experiments.sh` | Se NS-3 estiver funcionando |
+| **Cálculos precisos** | `gerar_experimentos_extendidos.sh` | Se `bc` estiver disponível |
+| **Verificar ambiente** | `verificar_instalacao.sh` | Diagnóstico do sistema |
 
 ## 📁 **ESTRUTURA ORGANIZADA DO PROJETO**
 
@@ -216,7 +256,8 @@ Para dúvidas ou problemas:
 
 1. **Verificar documentação**: `documentacao/RELATORIO_ORIENTADOR.md`
 2. **Consultar guia completo**: `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
-3. **Verificar ambiente**: `./scripts/verificar_instalacao.sh`
+3. **Verificar diferenças entre scripts**: `documentacao/DIFERENCAS_SCRIPTS.md`
+4. **Verificar ambiente**: `./scripts/verificar_instalacao.sh`
 
 ## 📚 **REFERÊNCIAS**
 

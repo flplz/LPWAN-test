@@ -127,13 +127,27 @@ python3 scripts/analise_resultados.py
 ## 📁 **ARQUIVOS ENTREGUES**
 
 ### **Scripts de Execução:**
-- `scripts/run_experiments_simplificado.sh` - Execução automática
+- `scripts/gerar_experimentos_extendidos_simples.sh` ⭐ **RECOMENDADO** - Gera 1.440 experimentos simulados
+- `scripts/run_experiments_simplificado.sh` - Execução híbrida (NS-3 + simulação)
 - `scripts/verificar_instalacao.sh` - Verificação de ambiente
 - `scripts/instalar_ns3.sh` - Instalação automática
 
 ### **Scripts de Análise:**
 - `scripts/converter_resultados.py` - Conversão para CSV
 - `scripts/analise_resultados.py` - Análise e gráficos
+
+### **📋 Diferenças entre Scripts de Geração:**
+- **`gerar_experimentos_extendidos_simples.sh`** ⭐ **PRINCIPAL**
+  - Gera dados simulados realistas (1.440 experimentos)
+  - Aritmética bash simples, sempre funciona
+  - Configurações corretas: 6 distâncias × 8 densidades × 10 execuções
+- **`gerar_experimentos_extendidos.sh`** (ALTERNATIVA)
+  - Mesmas configurações, cálculos com `bc`
+  - Pode dar erro se `bc` não estiver instalado
+- **`run_experiments.sh`** (NS-3 REAL)
+  - Executa simulações NS-3 reais
+  - Configurações antigas: 75 experimentos
+  - Depende de módulos NS-3 específicos
 
 ### **Documentação:**
 - `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md` - Guia completo

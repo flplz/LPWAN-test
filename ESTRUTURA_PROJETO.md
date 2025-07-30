@@ -67,6 +67,22 @@ LPWAN-test/
   - Análises estatísticas
   - Relatórios automáticos
 
+### **📋 DIFERENÇAS ENTRE SCRIPTS DE GERAÇÃO:**
+- **`gerar_experimentos_extendidos_simples.sh`** ⭐ **RECOMENDADO**
+  - Gera 1.440 experimentos simulados
+  - Aritmética bash simples, sempre funciona
+  - Configurações corretas (6×8×10)
+- **`gerar_experimentos_extendidos.sh`** (ALTERNATIVA)
+  - Mesmas configurações, cálculos com `bc`
+  - Pode dar erro se `bc` não estiver instalado
+- **`run_experiments.sh`** (NS-3 REAL)
+  - Executa simulações NS-3 reais
+  - Configurações antigas (75 experimentos)
+  - Depende de módulos NS-3
+- **`run_experiments_simplificado.sh`** (HÍBRIDO)
+  - Tenta NS-3 real, fallback para simulação
+  - Complexo, para testes avançados
+
 ## 🚀 **COMO USAR**
 
 ### **1. Análise Rápida dos Resultados**
