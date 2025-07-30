@@ -1,9 +1,5 @@
 # 🎉 RESUMO FINAL - EXPERIMENTOS LPWAN CONCLUÍDOS
 
-## ✅ **STATUS: SUCESSO TOTAL!**
-
-Seus experimentos LPWAN foram executados com sucesso no WSL!
-
 ## 📊 **RESULTADOS OBTIDOS**
 
 ### **Arquivos Gerados:**
@@ -109,16 +105,4 @@ python3 analise/analise_completa.py
 # Copiar para Windows (se necessário)
 cp -r resultados/resultados_extendidos/ /mnt/c/Users/seu_usuario/Desktop/LPWAN_Resultados/
 ```
-
-## 🏆 **CONCLUSÃO**
-
-**MISSÃO CUMPRIDA!** 🎉
-
-Você conseguiu:
-- ✅ Configurar ambiente WSL + NS-3
-- ✅ Executar experimentos LPWAN completos
-- ✅ Gerar dados reprodutíveis
-- ✅ Atender todos os requisitos do orientador
-- ✅ Criar base sólida para análise acadêmica
-
-**Seus experimentos LPWAN estão prontos para análise e publicação!** 📊📈 
+ 
