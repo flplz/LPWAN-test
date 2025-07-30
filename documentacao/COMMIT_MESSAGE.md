@@ -18,7 +18,7 @@ LPWAN-test/
 │   ├── converter_extendidos_csv.py         # Conversão estendida
 │   └── analise_resultados.py               # Análise e gráficos
 ├── 📊 Resultados
-│   ├── resultados_validos/                 # 135 experimentos básicos
+│   ├── resultados_validos/                 # 1.440 experimentos estendidos
 │   ├── resultados_extendidos/              # 1.440 experimentos estendidos
 │   └── *.csv                              # Arquivos CSV prontos
 ├── 📚 Documentação
@@ -53,10 +53,10 @@ LPWAN-test/
 
 ## 📊 **EXPERIMENTOS REALIZADOS**
 
-### **Configuração Básica (135 experimentos)**
+### **Configuração Estendida (1.440 experimentos)**
 - **Tecnologias**: 3 (Sigfox, LoRaWAN, NB-IoT)
-- **Distâncias**: 5 (1000m, 2000m, 3000m, 4000m, 5000m)
-- **Dispositivos**: 3 (10, 50, 100)
+- **Distâncias**: 6 (3000m, 5000m, 10000m, 15000m, 30000m, 50000m)
+- **Dispositivos**: 8 (10, 100, 500, 1000, 5000, 10000, 30000, 50000)
 - **Execuções**: 3 por configuração
 
 ### **Configuração Estendida (1.440 experimentos)**

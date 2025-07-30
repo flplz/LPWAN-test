@@ -8,18 +8,18 @@
 > "os scripts precisam ter saida em csv ou uma indicação de como gerar um arquivo a partir das saidas e depois o codigo de como converte."
 
 **✅ ATENDIDO:**
-- **Script de conversão**: `converter_resultados.py` - converte automaticamente de .txt para .csv
+- **Script de conversão**: `scripts/converter_resultados.py` - converte automaticamente de .txt para .csv
 - **Saída padronizada**: Todos os arquivos seguem formato consistente
 - **Reproduzibilidade**: Scripts automatizados para conversão
-- **Instruções claras**: Documentação completa em `GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
+- **Instruções claras**: Documentação completa em `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
 
 **Como usar:**
 ```bash
 # Converter todos os resultados para CSV
-python3 converter_resultados.py --all
+python3 scripts/converter_resultados.py --all
 
 # Converter arquivo específico
-python3 converter_resultados.py sigfox resultados_sigfox.csv
+python3 scripts/converter_resultados.py sigfox resultados_sigfox.csv
 ```
 
 ### **2. ✅ CONSUMO DE ENERGIA PARA TODAS AS TECNOLOGIAS**
@@ -35,9 +35,9 @@ python3 converter_resultados.py sigfox resultados_sigfox.csv
 **Evidência nos arquivos:**
 ```bash
 # Verificar consumo de energia em cada tecnologia
-grep "Consumo Energia" resultados_validos/resultados_sigfox_1000m_10dev_1.txt
-grep "Consumo Energia" resultados_validos/resultados_lorawan_1000m_10dev_1.txt
-grep "Consumo Energia" resultados_validos/resultados_nbiot_1000m_10dev_1.txt
+grep "Consumo Energia" resultados/resultados_extendidos/resultados_sigfox_3000m_10dev_1.txt
+grep "Consumo Energia" resultados/resultados_extendidos/resultados_lorawan_3000m_10dev_1.txt
+grep "Consumo Energia" resultados/resultados_extendidos/resultados_nbiot_3000m_10dev_1.txt
 ```
 
 ### **3. ✅ SAÍDA PADRONIZADA - UM ARQUIVO POR DISTÂNCIA**
@@ -47,22 +47,22 @@ grep "Consumo Energia" resultados_validos/resultados_nbiot_1000m_10dev_1.txt
 
 **✅ ATENDIDO:**
 - **Formato padronizado**: `resultados_[tecnologia]_[distancia]m_[dispositivos]dev_[execucao].txt`
-- **Mesmo diretório**: Todos em `resultados_validos/`
-- **Estrutura consistente**: 135 arquivos (45 por tecnologia)
+- **Mesmo diretório**: Todos em `resultados/resultados_extendidos/`
+- **Estrutura consistente**: 1.440 arquivos (480 por tecnologia)
 - **Métricas idênticas**: 14 métricas padronizadas para todas as tecnologias
 
 **Estrutura de arquivos:**
 ```
-resultados_validos/
-├── resultados_sigfox_1000m_10dev_1.txt
-├── resultados_sigfox_1000m_10dev_2.txt
-├── resultados_sigfox_1000m_10dev_3.txt
-├── resultados_lorawan_1000m_10dev_1.txt
-├── resultados_lorawan_1000m_10dev_2.txt
-├── resultados_lorawan_1000m_10dev_3.txt
-├── resultados_nbiot_1000m_10dev_1.txt
-├── resultados_nbiot_1000m_10dev_2.txt
-└── resultados_nbiot_1000m_10dev_3.txt
+resultados/resultados_extendidos/
+├── resultados_sigfox_3000m_10dev_1.txt
+├── resultados_sigfox_3000m_10dev_2.txt
+├── resultados_sigfox_3000m_10dev_3.txt
+├── resultados_lorawan_3000m_10dev_1.txt
+├── resultados_lorawan_3000m_10dev_2.txt
+├── resultados_lorawan_3000m_10dev_3.txt
+├── resultados_nbiot_3000m_10dev_1.txt
+├── resultados_nbiot_3000m_10dev_2.txt
+└── resultados_nbiot_3000m_10dev_3.txt
 ```
 
 ### **4. ✅ REPRODUZIBILIDADE PARA REVISORES**
@@ -71,38 +71,38 @@ resultados_validos/
 > "quando forem avaliar a publicação os leitores/revisores tem que ser capazes de gerar a mesma saida que vou utilizada para o trabalho, e depois rodar os mesmos codigos python que estou rodando."
 
 **✅ ATENDIDO:**
-- **Scripts automatizados**: `run_experiments_simplificado.sh`
-- **Instruções completas**: `GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
-- **Verificação de ambiente**: `verificar_instalacao.sh`
-- **Instalação automática**: `instalar_ns3.sh`
-- **Análise Python**: `analise_resultados.py`
-- **Conversão automática**: `converter_resultados.py`
+- **Scripts automatizados**: `scripts/run_experiments_simplificado.sh`
+- **Instruções completas**: `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
+- **Verificação de ambiente**: `scripts/verificar_instalacao.sh`
+- **Instalação automática**: `scripts/instalar_ns3.sh`
+- **Análise Python**: `scripts/analise_resultados.py`
+- **Conversão automática**: `scripts/converter_resultados.py`
 
 **Para reproduzir (revisores):**
 ```bash
 # 1. Clonar/baixar o projeto
 # 2. Executar verificação
-./verificar_instalacao.sh
+./scripts/verificar_instalacao.sh
 
 # 3. Instalar dependências (se necessário)
-./instalar_ns3.sh
+./scripts/instalar_ns3.sh
 
 # 4. Executar experimentos
-./run_experiments_simplificado.sh
+./scripts/run_experiments_simplificado.sh
 
 # 5. Converter para CSV
-python3 converter_resultados.py --all
+python3 scripts/converter_resultados.py --all
 
 # 6. Analisar resultados
-python3 analise_resultados.py
+python3 scripts/analise_resultados.py
 ```
 
 ## 📊 **MÉTRICAS COLETADAS (TODAS AS TECNOLOGIAS)**
 
 ### **Métricas Padronizadas:**
 1. **Execução** - Número da execução (1, 2, 3)
-2. **Distância (m)** - Distância do gateway (1000, 2000, 3000, 4000, 5000)
-3. **Dispositivos** - Número de dispositivos (10, 50, 100)
+2. **Distância (m)** - Distância do gateway (3000, 5000, 10000, 15000, 30000, 50000)
+3. **Dispositivos** - Número de dispositivos (10, 100, 500, 1000, 5000, 10000, 30000, 50000)
 4. **Pacotes Enviados** - Total de pacotes transmitidos
 5. **Pacotes Recebidos** - Total de pacotes recebidos
 6. **Pacotes Duplicados** - Pacotes duplicados detectados
@@ -119,30 +119,30 @@ python3 analise_resultados.py
 
 ### **Cobertura Completa:**
 - **Tecnologias**: 3 (Sigfox, LoRaWAN, NB-IoT)
-- **Distâncias**: 5 (1000m, 2000m, 3000m, 4000m, 5000m)
-- **Dispositivos**: 3 (10, 50, 100)
-- **Execuções**: 3 por configuração
-- **Total**: 3 × 5 × 3 × 3 = **135 experimentos**
+- **Distâncias**: 6 (3000m, 5000m, 10000m, 15000m, 30000m, 50000m)
+- **Dispositivos**: 8 (10, 100, 500, 1000, 5000, 10000, 30000, 50000)
+- **Execuções**: 10 por configuração
+- **Total**: 3 × 6 × 8 × 10 = **1.440 experimentos**
 
 ## 📁 **ARQUIVOS ENTREGUES**
 
 ### **Scripts de Execução:**
-- `run_experiments_simplificado.sh` - Execução automática
-- `verificar_instalacao.sh` - Verificação de ambiente
-- `instalar_ns3.sh` - Instalação automática
+- `scripts/run_experiments_simplificado.sh` - Execução automática
+- `scripts/verificar_instalacao.sh` - Verificação de ambiente
+- `scripts/instalar_ns3.sh` - Instalação automática
 
 ### **Scripts de Análise:**
-- `converter_resultados.py` - Conversão para CSV
-- `analise_resultados.py` - Análise e gráficos
+- `scripts/converter_resultados.py` - Conversão para CSV
+- `scripts/analise_resultados.py` - Análise e gráficos
 
 ### **Documentação:**
-- `GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md` - Guia completo
-- `GUIA_WSL.md` - Instruções específicas para WSL
-- `SOLUCAO_FINAL.md` - Resumo da solução
-- `README.md` - Documentação principal
+- `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md` - Guia completo
+- `documentacao/GUIA_WSL.md` - Instruções específicas para WSL
+- `documentacao/SOLUCAO_FINAL.md` - Resumo da solução
+- `documentacao/README.md` - Documentação principal
 
 ### **Resultados:**
-- `resultados_validos/` - 135 arquivos com dados completos
+- `resultados/resultados_extendidos/` - 1.440 arquivos com dados completos
 - Formato padronizado e reprodutível
 
 ## 🏆 **CONCLUSÃO**

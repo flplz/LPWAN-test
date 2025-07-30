@@ -7,14 +7,14 @@ Seus experimentos LPWAN foram executados com sucesso no WSL!
 ## 📊 **RESULTADOS OBTIDOS**
 
 ### **Arquivos Gerados:**
-- **135 arquivos de resultados** em `resultados_simplificado/`
+- **1.440 arquivos de resultados** em `resultados/resultados_extendidos/`
 - **Formato**: Arquivos `.txt` com métricas padronizadas
 
 ### **Configurações Testadas:**
 - **Tecnologias**: Sigfox, LoRaWAN, NB-IoT
-- **Distâncias**: 1000m, 2000m, 3000m, 4000m, 5000m
-- **Dispositivos**: 10, 50, 100
-- **Execuções**: 3 por configuração
+- **Distâncias**: 3000m, 5000m, 10000m, 15000m, 30000m, 50000m
+- **Dispositivos**: 10, 100, 500, 1000, 5000, 10000, 30000, 50000
+- **Execuções**: 10 por configuração
 
 ### **Métricas Coletadas:**
 - Execução, Distância (m), Dispositivos
@@ -29,7 +29,7 @@ Seus experimentos LPWAN foram executados com sucesso no WSL!
 ### **1. Visualizar Resultados:**
 ```bash
 # Ver um exemplo de resultado
-cat resultados_simplificado/resultados_sigfox_1000m_10dev_1.txt
+cat resultados/resultados_extendidos/resultados_sigfox_3000m_10dev_1.txt
 ```
 
 ### **2. Converter para CSV (se necessário):**
@@ -38,13 +38,13 @@ cat resultados_simplificado/resultados_sigfox_1000m_10dev_1.txt
 sudo apt install python3-pandas python3-numpy python3-matplotlib python3-seaborn
 
 # Converter resultados
-python3 converter_resultados.py --all
+python3 scripts/converter_resultados.py --all
 ```
 
 ### **3. Análise dos Dados:**
 ```bash
 # Gerar gráficos e relatórios
-python3 analise_resultados.py
+python3 scripts/analise_resultados.py
 ```
 
 ## 🚀 **REPRODUZIBILIDADE**
@@ -52,12 +52,12 @@ python3 analise_resultados.py
 ### **Para Reproduzir os Experimentos:**
 ```bash
 cd ~/ns3_test/LPWAN-test
-./run_experiments_simplificado.sh
+./scripts/run_experiments_simplificado.sh
 ```
 
 ### **Para Verificar Instalação:**
 ```bash
-./verificar_instalacao.sh
+./scripts/verificar_instalacao.sh
 ```
 
 ## 📁 **ESTRUTURA DE ARQUIVOS**
@@ -65,13 +65,13 @@ cd ~/ns3_test/LPWAN-test
 ```
 /home/lipef/ns3_test/
 ├── LPWAN-test/                    ← Seus experimentos
-│   ├── resultados_simplificado/   ← 135 arquivos de resultados
+│   ├── resultados/resultados_extendidos/   ← 1.440 arquivos de resultados
 │   ├── sigfox/                    ← Códigos Sigfox
 │   ├── lorawan/                   ← Códigos LoRaWAN
 │   ├── nbiot/                     ← Códigos NB-IoT
 │   ├── run_experiments_simplificado.sh
-│   ├── converter_resultados.py
-│   ├── analise_resultados.py
+│   ├── scripts/converter_resultados.py
+│   ├── scripts/analise_resultados.py
 │   └── ...
 └── ns-3-dev/                      ← NS-3 instalado
 ```
@@ -88,7 +88,7 @@ cd ~/ns3_test/LPWAN-test
 - ✅ **Diferentes Densidades**: 3 números de dispositivos
 
 ### **📈 Dados para Análise:**
-- **Total de experimentos**: 135
+- **Total de experimentos**: 1.440
 - **Tecnologias comparadas**: 3
 - **Métricas por experimento**: 14
 - **Formato de saída**: Padronizado e reprodutível
@@ -98,11 +98,11 @@ cd ~/ns3_test/LPWAN-test
 ### **1. Análise dos Dados:**
 ```bash
 # Gerar gráficos comparativos
-python3 analise_resultados.py
+python3 scripts/analise_resultados.py
 ```
 
 ### **2. Relatório Acadêmico:**
-- Usar os dados em `resultados_simplificado/`
+- Usar os dados em `resultados/resultados_extendidos/`
 - Comparar performance das 3 tecnologias
 - Analisar impacto da distância e densidade
 - Incluir gráficos de PDR, latência, consumo energético
@@ -110,7 +110,7 @@ python3 analise_resultados.py
 ### **3. Backup dos Resultados:**
 ```bash
 # Copiar para Windows (se necessário)
-cp -r resultados_simplificado/ /mnt/c/Users/seu_usuario/Desktop/LPWAN_Resultados/
+cp -r resultados/resultados_extendidos/ /mnt/c/Users/seu_usuario/Desktop/LPWAN_Resultados/
 ```
 
 ## 🏆 **CONCLUSÃO**
