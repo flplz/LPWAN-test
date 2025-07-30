@@ -68,7 +68,6 @@ resultados/resultados_extendidos/
 > "quando forem avaliar a publicação os leitores/revisores tem que ser capazes de gerar a mesma saida que vou utilizada para o trabalho, e depois rodar os mesmos codigos python que estou rodando."
 
 **✅ ATENDIDO:**
-- **Scripts automatizados**: `scripts/run_experiments_simplificado.sh`
 - **Instruções completas**: `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
 - **Verificação de ambiente**: `scripts/verificar_instalacao.sh`
 - **Instalação automática**: `scripts/instalar_ns3.sh`
@@ -122,7 +121,6 @@ python3 analise/analise_completa.py
 
 ### **Scripts de Execução:**
 - `scripts/gerar_experimentos_extendidos_simples.sh` ⭐ **RECOMENDADO** - Gera 1.440 experimentos simulados
-- `scripts/run_experiments_simplificado.sh` - Execução híbrida (NS-3 + simulação)
 - `scripts/verificar_instalacao.sh` - Verificação de ambiente
 - `scripts/instalar_ns3.sh` - Instalação automática
 
@@ -135,18 +133,15 @@ python3 analise/analise_completa.py
   - Gera dados simulados realistas (1.440 experimentos)
   - Aritmética bash simples, sempre funciona
   - Configurações corretas: 6 distâncias × 8 densidades × 10 execuções
-- **`gerar_experimentos_extendidos.sh`** (REMOVIDO)
-  - Mesmas configurações, cálculos com `bc`
-  - Pode dar erro se `bc` não estiver instalado
-- **`run_experiments.sh`** (NS-3 REAL)
+
+- **`run_experiments.sh`** (NS-3 REAL) -- depende de estar todas as dependencias (modulos) instalados.
   - Executa simulações NS-3 reais
   - Configurações antigas: 75 experimentos
   - Depende de módulos NS-3 específicos
 
 ### **Documentação:**
 - `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md` - Guia completo
-- `documentacao/GUIA_WSL.md` - Instruções específicas para WSL
-- `documentacao/SOLUCAO_FINAL.md` - Resumo da solução
+- `documentacao/RESUMO_FINAL.md` - Resumo da solução
 - `documentacao/README.md` - Documentação principal
 
 ### **Resultados:**
@@ -171,7 +166,3 @@ python3 analise/analise_completa.py
 - **Estatisticamente válido**: 3 execuções por configuração
 - **Documentado**: Instruções claras para reprodução
 - **Padronizado**: Formato consistente entre tecnologias
-
-**🎉 SEU TRABALHO ESTÁ PRONTO PARA PUBLICAÇÃO ACADÊMICA!**
-
-Todos os requisitos do orientador foram atendidos e superados. Os revisores terão acesso completo aos dados, scripts e instruções para reproduzir exatamente os mesmos experimentos. 
