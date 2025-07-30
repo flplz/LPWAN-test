@@ -72,8 +72,8 @@ resultados/resultados_extendidos/
 - **Instruções completas**: `documentacao/GUIA_COMPLETO_EXPERIMENTOS_LPWAN.md`
 - **Verificação de ambiente**: `scripts/verificar_instalacao.sh`
 - **Instalação automática**: `scripts/instalar_ns3.sh`
-- **Análise Python**: `scripts/analise_resultados.py`
-- **Conversão automática**: `scripts/converter_resultados.py`
+- **Análise Python**: `analise/analise_completa.py`
+- **Conversão automática**: `scripts/converter_extendidos_csv.py`
 
 **Para reproduzir (revisores):**
 ```bash
@@ -127,15 +127,15 @@ python3 analise/analise_completa.py
 - `scripts/instalar_ns3.sh` - Instalação automática
 
 ### **Scripts de Análise:**
-- `scripts/converter_resultados.py` - Conversão para CSV
-- `scripts/analise_resultados.py` - Análise e gráficos
+- `scripts/converter_extendidos_csv.py` - Conversão para CSV
+- `analise/analise_completa.py` - Análise e gráficos
 
 ### **📋 Diferenças entre Scripts de Geração:**
 - **`gerar_experimentos_extendidos_simples.sh`** ⭐ **PRINCIPAL**
   - Gera dados simulados realistas (1.440 experimentos)
   - Aritmética bash simples, sempre funciona
   - Configurações corretas: 6 distâncias × 8 densidades × 10 execuções
-- **`gerar_experimentos_extendidos.sh`** (ALTERNATIVA)
+- **`gerar_experimentos_extendidos.sh`** (REMOVIDO)
   - Mesmas configurações, cálculos com `bc`
   - Pode dar erro se `bc` não estiver instalado
 - **`run_experiments.sh`** (NS-3 REAL)

@@ -113,7 +113,7 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 | Cenário | Script | Por quê? |
 |---------|--------|----------|
 | **Gerar 1.440 experimentos** | `gerar_experimentos_extendidos_simples.sh` | Confiável, rápido, configurações corretas |
-| **Analisar dados** | `analise_resultados.py` | Gera gráficos dos resultados |
+| **Analisar dados** | `analise/analise_completa.py` | Gera gráficos dos resultados |
 | **Verificar ambiente** | `verificar_instalacao.sh` | Diagnóstico do sistema |
 | **Converter para CSV** | `converter_extendidos_csv.py` | Converte .txt para .csv |
 
@@ -128,7 +128,7 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 
 | Cenário | Script | Por quê? |
 |---------|--------|----------|
-| **`bc` disponível** | `gerar_experimentos_extendidos.sh` | Cálculos de ponto flutuante |
+| **`bc` disponível** | `gerar_experimentos_extendidos.sh` (REMOVIDO) | Cálculos de ponto flutuante |
 
 ## 📋 **RESUMO EXECUTIVO**
 
@@ -145,7 +145,7 @@ Este documento explica as diferenças entre os diferentes scripts disponíveis p
 - **Confiabilidade**: Depende da instalação NS-3
 
 **🔧 PARA CÁLCULOS PRECISOS:**
-- **Use**: `gerar_experimentos_extendidos.sh` (se `bc` funcionar)
+- **Use**: `gerar_experimentos_extendidos_simples.sh` (recomendado)
 - **Resultado**: 1.440 experimentos com ponto flutuante
 - **Tempo**: Segundos
 - **Confiabilidade**: Depende do `bc`

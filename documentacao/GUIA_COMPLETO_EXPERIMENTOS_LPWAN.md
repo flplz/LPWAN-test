@@ -97,7 +97,7 @@ def parse_nbiot_output(output_file):
 
 def main():
     if len(sys.argv) < 3:
-        print("Uso: python converter_resultados.py <tecnologia> <arquivo_saida>")
+        print("Uso: python converter_extendidos_csv.py")
         sys.exit(1)
     
     tecnologia = sys.argv[1]
@@ -148,7 +148,7 @@ for tech in "${TECNOLOGIAS[@]}"; do
             fi
             
             # Converter para CSV
-            python converter_resultados.py $tech "resultados_${tech}_${dist}m_${dev}dev.txt"
+            python converter_extendidos_csv.py
         done
     done
 done
@@ -160,7 +160,7 @@ echo "Todos os experimentos concluídos!"
 
 #### 4.1 Script de Análise
 ```python
-# analise_resultados.py
+# analise/analise_completa.py
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns

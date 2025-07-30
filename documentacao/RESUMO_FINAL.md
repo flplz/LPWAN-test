@@ -95,7 +95,7 @@ cd ~/ns3_test/LPWAN-test
 ### **1. Análise dos Dados:**
 ```bash
 # Gerar gráficos comparativos
-python3 scripts/analise_resultados.py
+python3 analise/analise_completa.py
 ```
 
 ### **2. Relatório Acadêmico:**

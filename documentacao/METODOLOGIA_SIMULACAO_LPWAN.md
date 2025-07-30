@@ -117,7 +117,7 @@ Nossos resultados mostram padrões consistentes com:
 
 - `gerar_experimentos_extendidos_simples.sh` - Geração automática de resultados
 - `converter_extendidos_csv.py` - Conversão para CSV
-- `analise_resultados.py` - Análise e gráficos
+- `analise/analise_completa.py` - Análise e gráficos
 - `verificar_instalacao.sh` - Verificação de ambiente
 
 ### **Configurações Testadas**
