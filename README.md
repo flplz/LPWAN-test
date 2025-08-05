@@ -221,6 +221,6 @@ Este projeto foi desenvolvido para fins acadêmicos e de pesquisa. Os resultados
 ---
 
 *Projeto LPWAN - Análise Comparativa de Tecnologias*  
-*Data: 2024*  
+*Data: 2025*  
 *Tecnologias: Sigfox, LoRaWAN, NB-IoT*  
 *Total de Experimentos: 1.440* 
